@@ -36,7 +36,7 @@ git clone https://github.com/ousax/SPasswords.git ;
 cd SPasswords;
 pip -r install requirements;
 chmod +x StrongPasswords.py;
-python3 StrongPasswords.py
+python3 StrongPasswords.py -h
 ```
 
 
