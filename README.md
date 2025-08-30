@@ -28,6 +28,12 @@
 # Requirements 
 - rich
 - pyfiglet
+
+# Install
+```git clone https://github.com/ousax/SPasswords.git; SPassword;
+```
+
+
 # Usage 
 - python3 StrongPasswords.py -plen 20 -sf googlePass -pNumber 10 -eXD 1 -eXS 1 -eXP 0 -prefix_ google -useSecret 1
 - python3 StrongPasswords.py -plen 20 -sf googlePass -pNumber 10 -eXD 1 -eXS 1 -eXP 0 -prefix_ google -useSecret 0    
