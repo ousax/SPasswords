@@ -19,4 +19,5 @@
 | `-passCheck`  | Check the complexity of the password                                             | int    | No       | –       | 0, 1        |
 
 # Requirements 
-. rich
+- rich
+- pyfiglet
