@@ -1,10 +1,13 @@
 # SPasswords
 ## Lightweight script to generate strong passwords
 
-
+Using the `Random` module  
 ![image alt](https://github.com/ousax/SPasswords/blob/a168df1d431a92da0b772223f9ab097047f568b2/passgg.png)
 
-# Options  
+Using the `Secrets` module
+![image alt](https://github.com/ousax/SPasswords/blob/52754040aa987f18b567995476d9ec9ba9434842/passSecrets.png)
+
+# Available options  
 
 | Argument      | Help Description                                                                 | Type   | Required | Default | Choices     |
 |---------------|----------------------------------------------------------------------------------|--------|----------|---------|-------------|
@@ -23,3 +26,6 @@
 # Requirements 
 - rich
 - pyfiglet
+# Usage 
+- python3 StrongPasswords.py -plen 20 -sf googlePass -pNumber 10 -eXD 1 -eXS 1 -eXP 0 -prefix_ google -useSecret 1
+- python3 StrongPasswords.py -plen 20 -sf googlePass -pNumber 10 -eXD 1 -eXS 1 -eXP 0 -prefix_ google -useSecret 0    
