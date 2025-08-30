@@ -16,7 +16,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument("-plen", help="The password's length [10 by default]", type=int, required=False, default=10)
 parser.add_argument("-sf", help="Save to a file", type=str, required=False, default=None)
 parser.add_argument("-pNumber", help="Number of passwords to generate", type=int, default=1000, required=False)
-parser.add_argument("-all_", help="Use digits, strings, punctuation", type=int, choices=[0, 1])
+parser.add_argument("-all_", help="Use digits, strings, punctuation", type=int, choices=[0, 1], default=0)
 parser.add_argument("-eXD", help="Exclude digits [0] to exlude digits [1] to include digits", type=int, choices=[0, 1], required=False, default=1)
 parser.add_argument("-eXP", help="Exclude, Include punctuations [0] exlude, [1] include", type=int, choices=[0, 1], required=False, default=1)
 parser.add_argument("-eXS", help="Exclude, Include letters [lower, upper case] [0] exlude, [1] include", type=int, choices=[0, 1], required=False, default=1)
@@ -78,6 +78,7 @@ class Password:
             )
         console.print(table)
     def Core_(self):
+        console, table = Console(), Table(title="Table of passwords")
         try:
             FileName = self.SaveToFile
             PassList = []
@@ -99,7 +100,7 @@ class Password:
             elif self.eXS == 0 and self.eXP == 1 and self.eXD == 1:
                 # exlude ascii_letters
                 ALL = string.digits + string.punctuation 
-            elif self.eXD == 1 and self.eXP== 0 and  self.eXS == 0:
+            elif self.eXD == 1 and self.eXP == 0 and  self.eXS == 0:
                 ALL = string.digits
                 print("[bold yellow]You've excluded both ascii_letters, punctuations[/bold yellow]")
                 print("[bold yellow]So to avoid raising a [red]'ValueError: Sample larger than population or is negative'[/red][/bold yellow]")
@@ -112,7 +113,7 @@ class Password:
             for password in range(self.pNumber):#self.pNumber):
                 password = self.prefix_+''.join(random.sample(ALL, self.PassLength))
                 PassList.append(password)
-            console, table = Console(), Table(title="Table of passwords")
+            
             table.add_column("Index", style="bold magenta", no_wrap=False, justify="center", overflow="ellipsis")
             table.add_column("Password", style="bold cyan", no_wrap=False, justify="center", overflow="ellipsis")
             console.log("Starting ...")
@@ -152,7 +153,7 @@ class Password:
                         print(password, min(max(score, 0), 100), "%")
                 password_complexity(PassList)
         except Exception as Error:
-            console.log("LogErrror")
+            console.log("LogError")
             console.print("Error: ", Error)
 Password().Core_()
     
