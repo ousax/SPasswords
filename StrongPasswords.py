@@ -2,6 +2,7 @@ import os
 import re # check is a given password is strong or not
 import argparse # for prefix FB_STRONGPASSWORD
 import random
+import secrets
 import string
 from pyfiglet import figlet_format
 from rich.console import Console
@@ -22,6 +23,7 @@ parser.add_argument("-eXP", help="Exclude, Include punctuations [0] exlude, [1] 
 parser.add_argument("-eXS", help="Exclude, Include letters [lower, upper case] [0] exlude, [1] include", type=int, choices=[0, 1], required=False, default=1)
 parser.add_argument("-prefix_", help="Add a prefix to a the passwords like [(fb, facebook), titktok, gmail, (twitter|xtwi), grok, openAI, ChatGpt...]", type=str, required=False, default="")
 parser.add_argument("-passCheck", help="Check the complexity of the password", type=int, choices=[0, 1], required=False)
+parser.add_argument("-useSecrets", help="Use secrets instead of random, this is ideal for randomness but could take time while generating passwords", type=int, choices=[0, 1], default=0)
 args = parser.parse_args()
 PassLength = args.plen
 SaveToFile = args.sf
@@ -32,18 +34,19 @@ eXS = args.eXS
 eXP = args.eXP
 prefix_ = args.prefix_
 passCheck = args.passCheck
-
+useSecrets = args.useSecrets
 class Password:
     def __init__(self, *argsH):
         self.PassLength = PassLength
         self.SaveToFile = SaveToFile
-        self.pNumber = PassNumber
+        self.pNumber = PassNumber # limit == 100000
         self.UseAll = UseAll
         self.eXD = eXD
         self.eXS = eXS
         self.eXP = eXP
         self.prefix_ = prefix_ 
         self.passCheck = passCheck
+        self.useSecrets = useSecrets
         self.__Banner()
     def __Banner(self):
         Banner = figlet_format(
@@ -111,8 +114,12 @@ class Password:
                 self.PassLength = len(string.punctuation) 
             self.prefix_ = self.prefix_+"_" if self.prefix_ != "" else ""
             for password in range(self.pNumber):#self.pNumber):
-                password = self.prefix_+''.join(random.sample(ALL, self.PassLength))
-                PassList.append(password)
+                if self.useSecrets:
+                    password = self.prefix_+''.join(secrets.choice(ALL) for x in range(self.PassLength))
+                    PassList.append(password)
+                else:
+                    password = self.prefix_+''.join(random.sample(ALL, self.PassLength))
+                    PassList.append(password)
             
             table.add_column("Index", style="bold magenta", no_wrap=False, justify="center", overflow="ellipsis")
             table.add_column("Password", style="bold cyan", no_wrap=False, justify="center", overflow="ellipsis")
