@@ -30,8 +30,9 @@
 - pyfiglet
 
 # Install
+
 ```git clone https://github.com/ousax/SPasswords.git; SPassword;
-```
+
 
 
 # Usage 
