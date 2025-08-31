@@ -22,7 +22,7 @@
 | `-eXS`        | Exclude/Include letters [lower, upper case] [0] exclude, [1] include             | int    | No       | 1       | 0, 1        |
 | `-prefix_`    | Add a prefix to the passwords (e.g., fb, tiktok, gmail, twitter, etc.)           | str    | No       | ""      | –           |
 | `-passCheck`  | Check the complexity of the password                                             | int    | No       | –       | 0, 1        |
-| `-useSecrets` | Use `secrets` instead of `random` for better randomness (can be slower)          | int    | No       | 0       | 0, 1        |
+| `-useSecrets` | Use `secrets` instead of `random` for better randomness (can be slower)          | int    | No       | n       | ["Hex", "Choice", "UrlSafe", "n"]        |
 
 
 # Requirements 
