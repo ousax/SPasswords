@@ -22,7 +22,7 @@ parser.add_argument("-eXP", help="Exclude, Include punctuations [0] exlude, [1] 
 parser.add_argument("-eXS", help="Exclude, Include letters [lower, upper case] [0] exlude, [1] include", type=int, choices=[0, 1], required=False, default=1)
 parser.add_argument("-prefix_", help="Add a prefix to a the passwords like [(fb, facebook), titktok, gmail, (twitter|xtwi), grok, openAI, ChatGpt...]", type=str, required=False, default="")
 parser.add_argument("-passCheck", help="Check the complexity of the password", type=int, choices=[0, 1], required=False)
-parser.add_argument("-useSecrets", help="Use secrets instead of random, this is ideal for randomness but could take time while generating passwords", choices=["0", "1", "UrlSafe"], default="0")
+parser.add_argument("-useSecrets", help="Use secrets instead of random, this is ideal for randomness but could take time while generating passwords", choices=["Hex", "Choice", "UrlSafe", "n"], default="n")
 """
 secrets.token_urlsafe
 secrets.token_hex(
@@ -117,7 +117,16 @@ class Password:
                 self.PassLength = len(string.punctuation) 
             self.prefix_ = self.prefix_+"_" if self.prefix_ != "" else ""
             for password in range(self.pNumber):#self.pNumber):
-                if self.useSecrets:
+                if self.useSecrets == "UrlSafe":
+                    console.print("UrlSafe")
+                    password = self.prefix_+"".join(secrets.token_urlsafe(self.PassLength))
+                    PassList.append(password)
+                elif self.useSecrets == "Hex":
+                    console.print("Hex")
+                    password = self.prefix_+"".join(secrets.token_hex(self.PassLength))
+                    PassList.append(password)
+                elif self.useSecrets == "Choice":
+                    console.print("Choice")
                     password = self.prefix_+''.join(secrets.choice(ALL) for x in range(self.PassLength))
                     PassList.append(password)
                 else:
