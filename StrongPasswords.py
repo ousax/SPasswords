@@ -118,15 +118,15 @@ class Password:
             self.prefix_ = self.prefix_+"_" if self.prefix_ != "" else ""
             for password in range(self.pNumber):#self.pNumber):
                 if self.useSecrets == "UrlSafe":
-                    console.print("UrlSafe")
+                    #console.print("UrlSafe")
                     password = self.prefix_+"".join(secrets.token_urlsafe(self.PassLength))
                     PassList.append(password)
                 elif self.useSecrets == "Hex":
-                    console.print("Hex")
+                    #console.print("Hex")
                     password = self.prefix_+"".join(secrets.token_hex(self.PassLength))
                     PassList.append(password)
                 elif self.useSecrets == "Choice":
-                    console.print("Choice")
+                    "console.print("Choice")
                     password = self.prefix_+''.join(secrets.choice(ALL) for x in range(self.PassLength))
                     PassList.append(password)
                 else:
@@ -176,3 +176,4 @@ class Password:
             console.print("Error: ", Error)
 Password().Core_()
     
+
