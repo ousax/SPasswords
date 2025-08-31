@@ -9,7 +9,6 @@ from rich.console import Console
 from rich.table import Table
 from rich.traceback import install
 from rich import print
-
 install()
 parser = argparse.ArgumentParser(
     description="Strong passwords generator"
@@ -23,7 +22,11 @@ parser.add_argument("-eXP", help="Exclude, Include punctuations [0] exlude, [1] 
 parser.add_argument("-eXS", help="Exclude, Include letters [lower, upper case] [0] exlude, [1] include", type=int, choices=[0, 1], required=False, default=1)
 parser.add_argument("-prefix_", help="Add a prefix to a the passwords like [(fb, facebook), titktok, gmail, (twitter|xtwi), grok, openAI, ChatGpt...]", type=str, required=False, default="")
 parser.add_argument("-passCheck", help="Check the complexity of the password", type=int, choices=[0, 1], required=False)
-parser.add_argument("-useSecrets", help="Use secrets instead of random, this is ideal for randomness but could take time while generating passwords", type=int, choices=[0, 1], default=0)
+parser.add_argument("-useSecrets", help="Use secrets instead of random, this is ideal for randomness but could take time while generating passwords", choices=["0", "1", "UrlSafe"], default="0")
+"""
+secrets.token_urlsafe
+secrets.token_hex(
+"""
 args = parser.parse_args()
 PassLength = args.plen
 SaveToFile = args.sf
@@ -39,7 +42,7 @@ class Password:
     def __init__(self, *argsH):
         self.PassLength = PassLength
         self.SaveToFile = SaveToFile
-        self.pNumber = PassNumber # limit == 100000
+        self.pNumber = PassNumber
         self.UseAll = UseAll
         self.eXD = eXD
         self.eXS = eXS
