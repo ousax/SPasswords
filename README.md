@@ -9,6 +9,10 @@
 
 ![image alt](https://github.com/ousax/SPasswords/blob/52754040aa987f18b567995476d9ec9ba9434842/passSecrets.png)
 
+### Hex 
+
+![image alt](https://github.com/ousax/SPasswords/blob/f510cd44232285026dc38b10bf129494e420c200/Capture%20d%E2%80%99%C3%A9cran%20(395).png)
+
 # Available options  
 
 | Argument      | Help Description                                                                 | Type   | Required | Default | Choices     |
