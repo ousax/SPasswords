@@ -42,5 +42,6 @@ python3 StrongPasswords.py -h
 
 
 # Usage 
-- python3 StrongPasswords.py -plen 20 -sf googlePass -pNumber 10 -eXD 1 -eXS 1 -eXP 0 -prefix_ google -useSecret 1
-- python3 StrongPasswords.py -plen 20 -sf googlePass -pNumber 10 -eXD 1 -eXS 1 -eXP 0 -prefix_ google -useSecret 0    
+- python3 StrongPasswords.py -plen 20 -sf googlePass -pNumber 10 -eXD 1 -eXS 1 -eXP 0 -prefix_ google
+- python3 StrongPasswords.py -plen 20 -sf googlePass -pNumber 10 -eXD 1 -eXS 1 -eXP 0 -prefix_ google -useSecret "Hex"    
+
