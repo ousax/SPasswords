@@ -126,7 +126,7 @@ class Password:
                     password = self.prefix_+"".join(secrets.token_hex(self.PassLength))
                     PassList.append(password)
                 elif self.useSecrets == "Choice":
-                    "console.print("Choice")
+                    #"console.print("Choice")
                     password = self.prefix_+''.join(secrets.choice(ALL) for x in range(self.PassLength))
                     PassList.append(password)
                 else:
@@ -176,4 +176,5 @@ class Password:
             console.print("Error: ", Error)
 Password().Core_()
     
+
 
