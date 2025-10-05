@@ -148,7 +148,7 @@ class Password:
                     file = open(self.SaveToFile+formatted_time, "w") # creation time of the file 
                     for LINES in PassList:
                         file.writelines(f"{LINES}\n")
-                    console.print(f"[bold green] Output has been saved to {self.SaveToFile+current_datetime} [/ bold green]")
+                    console.print(f"[bold green] Output has been saved to {self.SaveToFile+formatted_time} [/ bold green]")
                 except FileExistsError:
                     console.log("File alredy exists")
                     pass
