@@ -4,6 +4,7 @@ import argparse # for prefix FB_STRONGPASSWORD
 import random
 import secrets
 import string
+from time import datetime
 from pyfiglet import figlet_format
 from rich.console import Console
 from rich.table import Table
@@ -142,7 +143,9 @@ class Password:
             if self.SaveToFile != None:
                 # save the output to a file name given by the user
                 try:
-                    file = open(self.SaveToFile, "w")
+                    current_datetime = datetime.now()
+                    formatted_time = current_datetime.strftime("%Y-%m-%d_%H:%M:%S")
+                    file = open(self.SaveToFile+formatted_time, "w") # creation time of the file 
                     for LINES in PassList:
                         file.writelines(f"{LINES}\n")
                     console.print(f"[bold green] Output has been saved to {self.SaveToFile} [/ bold green]")
